@@ -3,7 +3,6 @@
 using namespace std;
 
 int main() {
-    cout << "--- Testuvannya ierarkhii (za prykladom vikladacha) ---\n\n";
 
     Doglyad *tovar1 = new Doglyad();
     
