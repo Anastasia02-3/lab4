@@ -3,52 +3,65 @@
 
 #include <iostream>
 #include <string>
-using namespace std;
 
 class Kosmetyka {
-    string nazva;
-    string brend;
+protected:
+    std::string nazva;
+    std::string brend;
     double tsina;
 
 public:
-    int setNazva(string n);
-    int setBrend(string b);
+    int setNazva(std::string n);
+    int setBrend(std::string b);
     int setTsina(double t);
-    int pokazaty(); 
+
+    virtual int pokazaty(); 
 
 protected:
-    int opysTovaru(); 
+    int opysTovaru();
 };
 
-class Doglyad : protected Kosmetyka {
-    string typShkiry;
+
+class Doglyad : public Kosmetyka {
+protected:
+    std::string typShkiry;
+
 public:
-    Doglyad(); 
-    int setTypShkiry(string typ);
-    int pokazaty(); 
+    Doglyad();
+    int setTypShkiry(std::string typ);
+    int pokazaty() override;
 };
 
-class KremDlyaOblychchya : protected Doglyad {
+// ----------------------
+
+class KremDlyaOblychchya : public Doglyad {
 protected:
     int spf;
+
 public:
     KremDlyaOblychchya();
     KremDlyaOblychchya(int s);
     int setSPF(int s);
 };
+class NichnyiKrem : public KremDlyaOblychchya {
+    std::string aktyvniKomponenty;
 
-class NichnyiKrem : protected KremDlyaOblychchya {
-    string aktyvniKomponenty;
 public:
-    NichnyiKrem(int s, string komponenty);
+    NichnyiKrem(int s, std::string komponenty);
 };
 
-class Pomada : protected Kosmetyka {
-    string kolir;
+
+class Pomada : public Kosmetyka {
+    std::string kolir;
+
 public:
     Pomada();
-    int setKolir(string k);
-    int pokazaty();
+    int setKolir(std::string k);
+
+    int pokazaty() override;
+
+    void nanesty();
+    void nanesty(int kilkist);
 };
 
 #endif

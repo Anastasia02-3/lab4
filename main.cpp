@@ -1,23 +1,22 @@
-#include <iostream>
 #include "kosmetyka.h"
-using namespace std;
 
 int main() {
 
-    Doglyad *tovar1 = new Doglyad();
-    
-    cout << "\n";
-    Pomada *tovar2 = new Pomada();
-    
-    cout << "\n";
-    KremDlyaOblychchya *tovar3 = new KremDlyaOblychchya(30);
-    
-    cout << "\n";
-    NichnyiKrem *tovar4 = new NichnyiKrem(0, "Retynol");
-    delete tovar1;
-    delete tovar2;
-    delete tovar3;
-    delete tovar4;
+    Doglyad t1;
+
+    std::cout << "\n";
+
+    Pomada t2;
+    t2.nanesty();
+    t2.nanesty(3);
+
+    std::cout << "\n";
+
+    KremDlyaOblychchya t3(30);
+
+    std::cout << "\n";
+
+    NichnyiKrem t4(0, "Retynol");
 
     return 0;
 }
