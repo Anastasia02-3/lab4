@@ -5,85 +5,50 @@
 #include <string>
 using namespace std;
 
-
 class Kosmetyka {
     string nazva;
     string brend;
     double tsina;
 
 public:
-    void setNazva(string n);
-    void setBrend(string b);
-    void setTsina(double t);
-
-    virtual void pokazaty();
-
-    ~Kosmetyka() {}
+    int setNazva(string n);
+    int setBrend(string b);
+    int setTsina(double t);
+    int pokazaty(); 
 
 protected:
-    void opysTovaru();
+    int opysTovaru(); 
 };
 
-class Doglyad : public Kosmetyka {
+class Doglyad : protected Kosmetyka {
     string typShkiry;
-
 public:
-    Doglyad();
-
-    void setTypShkiry(string typ);
-
-    virtual void pokazaty() override;
-    void pokazaty(bool detalno);
+    Doglyad(); 
+    int setTypShkiry(string typ);
+    int pokazaty(); 
 };
 
-
-class KremDlyaOblychchya : public Doglyad {
+class KremDlyaOblychchya : protected Doglyad {
+protected:
     int spf;
-    bool zUvilazhnennyam;
-
 public:
     KremDlyaOblychchya();
-
-    void setSPF(int s);
-    void setUvilazhnenna(bool u);
-
-    virtual void pokazaty() override;
+    KremDlyaOblychchya(int s);
+    int setSPF(int s);
 };
 
-class NichnyiKrem : public KremDlyaOblychchya {
+class NichnyiKrem : protected KremDlyaOblychchya {
     string aktyvniKomponenty;
-    int hodynZastosuvannya;
-
 public:
-    NichnyiKrem();
-    NichnyiKrem(string brend, string komponenty, double tsina);
-
-    void setKomponenty(string k);
-    void setHodyna(int h);
-
-    virtual void pokazaty() override;
-
-    void zastosuvannya();
-    void zastosuvannya(int khvylyny);
+    NichnyiKrem(int s, string komponenty);
 };
 
-class Pomada : public Kosmetyka {
+class Pomada : protected Kosmetyka {
     string kolir;
-    string finish;
-    bool zUvilazhnennyam;
-
 public:
     Pomada();
-    Pomada(string brend, string kolir, string finish, double tsina);
-
-    void setKolir(string k);
-    void setFinish(string f);
-    void setUvilazhnenna(bool u);
-
-    virtual void pokazaty() override;
-
-    void naklasty();
-    void naklasty(bool zKonturnymOlivtsem);
+    int setKolir(string k);
+    int pokazaty();
 };
 
 #endif
