@@ -129,7 +129,7 @@ void Pomada::naklasty() {
 }
 
 void Pomada::naklasty(bool zKonturnymOlivtsem) {
-    if (zKonturnymOlivtsem)
+    if (zKonturnymOlivtsem) delete unnecessary files
         cout << "Spochatkuy okonturui huby, potim nakladay "
              << kolir << " pomadu\n";
     else
