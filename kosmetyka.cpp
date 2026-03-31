@@ -1,8 +1,30 @@
 #include "kosmetyka.h"
 
+Kosmetyka::Kosmetyka() {
+    nazva = "Unknown";
+    brend = "Unknown";
+    tsina = 0;
+}
+
+Kosmetyka::Kosmetyka(std::string n, std::string b, double t) {
+    nazva = n;
+    brend = b;
+    tsina = t;
+}
+
 int Kosmetyka::setNazva(std::string n) { nazva = n; return 1; }
 int Kosmetyka::setBrend(std::string b) { brend = b; return 1; }
 int Kosmetyka::setTsina(double t) { tsina = t; return 1; }
+
+double Kosmetyka::F(int x) {
+    std::cout << "F(int) called\n";
+    return x * 2;
+}
+
+double Kosmetyka::F(double x) {
+    std::cout << "F(double) called\n";
+    return x / 2;
+}
 
 int Kosmetyka::pokazaty() {
     std::cout << "Kosmetychnyi virib\n";
@@ -18,7 +40,7 @@ Doglyad::Doglyad() {
     setNazva("Universal zasib");
     setBrend("Natura");
     setTsina(150);
-    setTypShkiry("usi typy");
+    typShkiry = "usi typy";
 
     opysTovaru();
     pokazaty();
@@ -42,14 +64,19 @@ KremDlyaOblychchya::KremDlyaOblychchya(int s) {
     setNazva("Krem dlya oblychchya");
     setBrend("Vichy");
     setTsina(320);
-    setSPF(s);
+    spf = s;
 
     opysTovaru();
-    std::cout << "(SPF: " << spf << ")\n";
+    pokazaty();
 }
 
 int KremDlyaOblychchya::setSPF(int s) {
     spf = s;
+    return 1;
+}
+
+int KremDlyaOblychchya::pokazaty() {
+    std::cout << "SPF: " << spf << "\n";
     return 1;
 }
 
@@ -62,14 +89,19 @@ NichnyiKrem::NichnyiKrem(int s, std::string komponenty) {
     aktyvniKomponenty = komponenty;
 
     opysTovaru();
-    std::cout << "Sklad: " << aktyvniKomponenty << " (SPF " << spf << ")\n";
+    pokazaty();
+}
+
+int NichnyiKrem::pokazaty() {
+    std::cout << "Sklad: " << aktyvniKomponenty << "\n";
+    return 1;
 }
 
 Pomada::Pomada() {
     setNazva("Pomada");
     setBrend("MAC");
     setTsina(550);
-    setKolir("chervonyi");
+    kolir = "chervonyi";
 
     opysTovaru();
     pokazaty();

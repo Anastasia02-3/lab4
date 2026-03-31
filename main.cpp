@@ -18,5 +18,18 @@ int main() {
 
     NichnyiKrem t4(0, "Retynol");
 
+    std::cout << "\n";
+
+    Kosmetyka k;
+    std::cout << k.F(5) << "\n";
+    std::cout << k.F(5.5) << "\n";
+
+    std::cout << "\n";
+
+    Kosmetyka* obj = new Pomada();
+    obj->pokazaty(); 
+
+    delete obj;
+
     return 0;
 }
